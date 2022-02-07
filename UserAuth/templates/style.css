@@ -1,0 +1,9 @@
+.myform{
+    width: 80%;
+}
+
+.btns{
+    display: block;
+    justify-content: space-around;
+
+}
