@@ -40,7 +40,10 @@ INSTALLED_APPS = [
 
     # custom apps
     'catalog',
+<<<<<<< HEAD
     'UserAuth',
+=======
+>>>>>>> 62224281b4a2390ef9310ef18429fa6ac241095c
 ]
 
 MIDDLEWARE = [
