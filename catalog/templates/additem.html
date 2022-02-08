@@ -4,10 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food - Add Item</title>
+    <title>Post</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Add Item</h1>
+    <form class="w3-container w3-padding-64">
+
+        <div class="w3-card card">
+            <header class="w3-container w3-red">
+                <h1>Upload Image</h1>
+            </header>
+            <div class="w3-container w3-padding-16">
+                <input type="file" onchange="imagePreview()"><br>
+                <img src="" height="200" alt="">
+            </div>
+            <div class="w3-container w3-padding-16">
+                <input type="text" class="w3-input">
+                <label>Enter a comment</label>
+                <input type="number" class="w3-input">
+                <label >Phone Number</label>
+
+            </div>
+            <div class="w3-container w3-padding-64">
+                <button  class="w3-button w3-blue">Select Location</button>
+                <button  class="w3-button w3-blue w3-right">Conatct</button>
+                <p></p>
+                <button  class="w3-button w3-round-6 w3-blue">Select Location</button>
+                
+                <p></p>
+                <p>Don't have an account <a href="#">Sign up</a></p>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function imagePreview() {
+            var preview = document.querySelector('img');
+            var file    = document.querySelector('input[type=file]').files[0];
+            var reader  = new FileReader();
+                
+            reader.onloadend = function () {
+                preview.src = reader.result;
+                    }
+        
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        }
+    </script>
     
 </body>
 </html>

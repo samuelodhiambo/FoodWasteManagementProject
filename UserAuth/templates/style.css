@@ -1,9 +1,7 @@
-.myform{
-    width: 80%;
+form{
+    display: flex;
+    justify-content: center;
 }
-
-.btns{
-    display: block;
-    justify-content: space-around;
-
+.card{
+    width: 50%;   
 }
