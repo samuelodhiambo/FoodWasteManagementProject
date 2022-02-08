@@ -1,8 +1,9 @@
-from dataclasses import fields
+from email.policy import default
+from django import forms
 from django.forms import ModelForm
 from .models import Food, Order
 
 class FoodForm(ModelForm):
     class Meta:
         model = Food
-        fields = '__all__'
+        fields = ['product_name', 'location', 'quantity',]
