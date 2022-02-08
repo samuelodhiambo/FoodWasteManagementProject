@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/login.css">
     <title>Food - Login</title>
 </head>
+
 <body>
     <h1>Login</h1>
     <form action="{{ request.path }}{% if next %}?next='{{ next }}'{% endif %}" method="post">
@@ -16,5 +19,27 @@
         <input type="password" name="password" id="password" required>
         <input type="submit" value="Login">
     </form>
+    <div class="welcome">
+        <img src="./images/food.jpg" alt="food">
+    </div>
+    <div class="rectangles">
+        <h2>Welcome back</h2>
+        <!-- username part -->
+        <div class="rectangle1">
+            <img src="./images/email.png" alt="email">
+            <input #password(type='password' , pattern='name@gmail.com' , placeholder="Username" required,
+                title="Wasn't your password \" name@gmail.com\>
+        </div>
+        <!-- password part -->
+        <div class="rectangle2">
+            <img src="./images/scurty.jpg" alt="padlock">
+            <input #password(type='password' , pattern='password123' , placeholder="Enter your password" required,
+                title="Wasn't your password \" password123\>
+        </div>
+        <div class="signin">
+            <input type="submit" id="submit" value="Sign in">
+        </div>
+    </div>
 </body>
+
 </html>

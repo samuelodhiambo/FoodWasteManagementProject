@@ -1,0 +1,81 @@
+.welcome img {
+    padding-left: 650px;
+    width: 384px;
+    height: 380px;
+}
+
+.rectangles {
+    align-items: center;
+    padding: 50px;
+    margin-left: 450px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 700px;
+    height: 380px;
+    border: 2px solid white;
+}
+
+.rectangles h2 {
+    padding-left: 180px;
+    font-weight: bold;
+    font-size: 48px;
+
+}
+
+.rectangle1 {
+    display: flex;
+    align-content: center;
+}
+
+.rectangle1 img {
+    width: 60px;
+    height: 60px;
+    padding-left: 20px; 
+}
+
+.rectangle1 input {
+    padding: 10px;
+    margin-left: 70px;
+    margin-top: -20px;
+    font-size: 24px;
+
+}
+
+.rectangle2 {
+    display: flex;
+    align-content: center;
+}
+
+.rectangle2 img {
+    display: inline-flex;
+    width: 60px;
+    height: 60px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.rectangle2 input {
+    display: inline flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-left: 70px;
+    font-size: 24px;
+
+}
+
+.signin input {
+    outline: none;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    margin-top: 50px;
+    background: #ED6E6E;
+    border-radius: 39px;
+    width: 350px;
+    height: 50px;
+    font-size: 24px;
+    margin-left: 130px;
+}
