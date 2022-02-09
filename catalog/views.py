@@ -33,7 +33,7 @@ def add_item(request, template='additem.html'):
     form = FoodForm()
     return render(request, template, {'form': form})
 
-def view_items(request, template='viewitems.html'):
+def view_items(request, template='viewOrderItem.html'):
     products = Food.objects.all()
     context = {
         'products': products,

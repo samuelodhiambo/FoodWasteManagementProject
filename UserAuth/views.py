@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.urls import resolve
-from .forms import CreateUserForm
+from .forms import CreateUserForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from .models import UserProfile
 
 # Create your views here.
 def signin(request, template='Login.html'):
@@ -29,6 +30,10 @@ def register(request, template='Register.html'):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            profile = UserProfile()
+            profile.user = request.user
+            profile.phone = request.POST.get('phone')
+            profile.save()
             return redirect('home')
         return render(request, template, {'form': form})
     form = CreateUserForm()

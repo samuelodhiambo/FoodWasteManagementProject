@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="/UserAuth/static/css/viewOrderItems.css">
+    <link rel="stylesheet" href="{% static 'css/viewOrderItems.css' %}">
 
 </head>
 <body>
@@ -18,16 +19,16 @@
 
 <header>
 
-    <a href="#" class="logo"><img src="/UserAuth/static/assets/login/logo.png" alt="logo" style="margin: 0; padding: 0; width: 70px; height: 70px;"></a>
+    <a href="#" class="logo"><img src="{% static 'assets/login/logo.png' %}" alt="logo" style="margin: 0; padding: 0; width: 70px; height: 70px;"></a>
 
     <div id="menu-bar" class="fas fa-bars"></div>
 
     <nav class="navbar">
-        <a href="#home">home</a>
+        <a href="{% url 'home' %}">home</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
         <a href="#donate">Donate</a>
-        <a href="#get-started">Get Started</a>
+        <a href="{% url 'signup' %}">Get Started</a>
     </nav>
 
 </header>
@@ -45,6 +46,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Product</th>
                     <th>Location</th>
                     <th>Quantity</th>
@@ -53,27 +55,16 @@
                 </tr>
             </thead>
             <tbody>
+                {% for product in products %}
                 <tr>
-                    <td data-label="Product">Rice</td>
-                    <td data-label="Location">Kibera</td>
-                    <td data-label="Quantity">10kg</td>
+                    <td><img src="{{ product.pimage.url }}" alt="{{ product.product_name }}" height="50px"></td>
+                    <td data-label="Product">{{ product.product_name }}</td>
+                    <td data-label="Location">{{ product.county }} ({{ product.location }})</td>
+                    <td data-label="Quantity">{{ product.quantity }}</td>
                     <td><button class="update">Update</button></td>
                     <td><button class="delete">Delete</button></td>
                 </tr>
-                <tr>
-                    <td data-label="Product">Beans</td>
-                    <td data-label="Location">Kawangware</td>
-                    <td data-label="Quantity">1 bowl</td>
-                    <td><button class="update">Upadte</button></td>
-                    <td><button class="delete">Delete</button></td>
-                </tr>
-                <tr>
-                    <td data-label="Product">Maize Flour</td>
-                    <td data-label="Location">CBD</td>
-                    <td data-label="Quantity">3 tins</td>
-                    <td><button class="update">Upadte</button></td>
-                    <td><button class="delete">Delete</button></td>
-                </tr>
+                {% endfor %}
             </tbody>      
         </table>
      </div>
@@ -91,33 +82,17 @@
 
     <div class="box-container">
 
+        {% for product in products|slice:":3" %}
         <div class="box" style="text-align: left;">
-            <img class="bur" src="/UserAuth/static/assets/login/burger.jpg" alt="">
-            <h3>Burger</h3>
-            <h4 style="font-size: 15px;">Nairobi</h4>
+            <img class="bur" src="{{ product.pimage.url }}" alt="{{ product.product_name }}">
+            <h3>{{ product.product_name }}</h3>
+            <h4 style="font-size: 15px;">{{ product.county }}</h4>
             <div class="cart" style="float:right; margin-top: -5%;">
                 <i class="fas fa-shopping-cart"></i>
             </div>
             <a href="#" class="btn">order now</a>
         </div>
-        <div class="box" style="text-align: left;">
-            <img class="bur"src="/UserAuth/static/assets/login/burger.jpg" alt="">
-            <h3>Burger</h3>
-            <h4 style="font-size: 15px;">Nairobi</h4>
-            <div class="cart" style="float:right; margin-top: -5%;">
-                <i class="fas fa-shopping-cart"></i>
-            </div>
-            <a href="#" class="btn">order now</a>
-        </div>
-        <div class="box" style="text-align: left;">
-            <img class="bur"src="/UserAuth/static/assets/login/burger.jpg" alt="">
-            <h3>Burger</h3>
-            <h4 style="font-size: 15px;">Nairobi</h4>
-            <div class="cart" style="float:right; margin-top: -5%;">
-                <i class="fas fa-shopping-cart"></i>
-            </div>
-            <a href="#" class="btn">order now</a>
-        </div>
+        {% endfor %}
      
     </div>
 
