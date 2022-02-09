@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food - Post</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{% static 'css/addpost.css' %}">
+
 </head>
 <body>
 
@@ -337,7 +340,7 @@
                 </div>
 
             <button type="submit" class="w3-button w3-round-6 w3-blue">Add</button>
-            </div>
+        </div>
         </form>
     </div>
 
