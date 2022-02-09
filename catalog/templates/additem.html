@@ -357,6 +357,13 @@
             }
         }
     </script>
-    
+
+    <h1>Add Item</h1>
+    <form action="." method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="submit">
+    </form>
+
 </body>
 </html>
