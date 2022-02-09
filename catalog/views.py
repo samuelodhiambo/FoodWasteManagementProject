@@ -27,7 +27,7 @@ def add_item(request, template='additem.html'):
             food.price = form.cleaned_data['price']
             food.pimage = request.FILES.get('pimage')
             food.save()
-            return redirect('view')
+            return redirect('home')
         form = FoodForm(request.POST)
         return render(request, template, {'form': form})
     form = FoodForm()
@@ -46,7 +46,7 @@ def order(request, template='viewOrderItem.html'):
     order = Order()
     if request.method == 'POST':
         pk = request.POST.get('pk')
-        if not Order.objects.get(product=pk): 
+        if not Order.objects.filter(product=pk).exists(): 
             food = Food.objects.get(id=pk)
             order.user = request.user
             order.product = food
