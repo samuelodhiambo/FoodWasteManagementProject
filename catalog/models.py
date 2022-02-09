@@ -9,6 +9,16 @@ class Food(models.Model):
         null=False,
         max_length=50
     )
+    country = models.CharField(
+        blank=False,
+        null=False,
+        max_length=50
+    )
+    county = models.CharField(
+        blank=False,
+        null=False,
+        max_length=50
+    )
     location = models.CharField(
         blank=False,
         null=False,
@@ -19,6 +29,17 @@ class Food(models.Model):
         blank=True,
         default='Undefined Quantity',
         max_length=200
+    )
+    price = models.CharField(
+        blank=False,
+        null=False,
+        max_length=50
+    )
+    pimage = models.ImageField(
+        upload_to='images',
+        null=True,
+        blank = True,
+        editable=True
     )
 
     class Meta:

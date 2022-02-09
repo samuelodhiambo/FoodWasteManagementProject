@@ -17,7 +17,7 @@ def signin(request, template='Login.html'):
             if request.GET.get('next'):
                 url = request.GET.get("next", "")
                 url = resolve(str(url))
-                return HttpResponseRedirect(url)
+                return HttpResponseRedirect('/add/')
             return redirect('home')
         error = 'Credentials do not match'
         return render(request, template, {'error': error})

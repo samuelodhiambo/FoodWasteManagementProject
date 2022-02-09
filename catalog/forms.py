@@ -6,4 +6,4 @@ from .models import Food, Order
 class FoodForm(ModelForm):
     class Meta:
         model = Food
-        fields = ['product_name', 'location', 'quantity',]
+        fields = ['product_name', 'country', 'county', 'location', 'quantity', 'price', 'pimage',]
