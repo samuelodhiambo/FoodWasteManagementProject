@@ -6,42 +6,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <title>Food - Login</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
-    <h1>Login</h1>
-    <form action="{{ request.path }}{% if next %}?next='{{ next }}'{% endif %}" method="post">
-        {% csrf_token %}
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" required>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
-        <input type="submit" value="Login">
-    </form>
     <div class="welcome">
-        <img src="./images/food.jpg" alt="food">
+        <img src="{% static 'assets/login/food.jpg' %}" alt="food">
     </div>
-    <div class="rectangles">
-        <h2>Welcome back</h2>
-        <!-- username part -->
-        <div class="rectangle1">
-            <img src="./images/email.png" alt="email">
-            <input #password(type='password' , pattern='name@gmail.com' , placeholder="Username" required,
-                title="Wasn't your password \" name@gmail.com\>
+    <div class="outer">
+        <div class="rectangles">
+            <h2>Welcome back</h2>
+            <form action="{{ request.path }}{% if next %}?next='{{ next }}'{% endif %}" method="post">
+                {% csrf_token %}
+                <!-- username part -->
+                <div class="rectangle1">
+                    <img src="{% static 'assets/login/email.png' %}" alt="email">
+                    <input type='text' name="username" placeholder="Username" required
+                        title="Invalid credentials"\>
+                </div>
+                <!-- password part -->
+                <div class="rectangle2">
+                    <img src="{% static 'assets/login/scurty.jpg' %}" alt="padlock">
+                    <input type='password' name="password" placeholder="Enter your password" required,
+                        title="Wasn't your password"\>
+                </div>
+                <div class="signin">
+                    <input type="submit" id="submit" value="Sign in">
+                </div>
+            </form>
         </div>
-        <!-- password part -->
-        <div class="rectangle2">
-            <img src="./images/scurty.jpg" alt="padlock">
-            <input #password(type='password' , pattern='password123' , placeholder="Enter your password" required,
-                title="Wasn't your password \" password123\>
-        </div>
-        <div class="signin">
-            <input type="submit" id="submit" value="Sign in">
-        </div>
+        <div></div>
     </div>
+    
 </body>
 
 </html>

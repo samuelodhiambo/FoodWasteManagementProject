@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="../static/js/tailwind.js"></script>
+    <script src="{% static 'js/tailwind.js' %}"></script>
     <title>Food - Home</title>
 </head>
 
@@ -16,7 +17,7 @@
     <main class="px-10">
         <nav class="flex  items-center justify-between flex-wrap bg-primary-500 p-6">
             <div class="flex items-center flex-shrink-0 text-white mr-6">
-                <img src="../static/assets/brand.png" alt="logo" class="w-20 h-12">
+                <img src="{% static 'assets/brand.png' %}" alt="logo" class="w-20 h-12">
             </div>
             <div class="block lg:hidden">
                 <button
@@ -64,12 +65,12 @@
                         <h1 class="text-white text-2xl">Free Delivery Month</h1>
                         <p class="text-black text-xl">Lorem ipsum dolor consect si et malis</p>
 
-                        <button
+                        <a href="{% url 'login' %}"><button
                             class="btn btn-secondary border border-white h-14 w-24 rounded-xl hover:text-white hover:border-secondary">Get
-                            Started</button>
+                            Started</button></a>
                     </div>
 
-                    <img class="h-36" src="../static/assets/meat.png" alt="logo">
+                    <img class="h-36" src="{% static 'assets/meat.png' %}" alt="logo">
                 </div>
             </div>
             <div class="mx-2 my-4 flex justify-between">
@@ -81,7 +82,7 @@
                 <div class="flex sm:block h-full w-1/4 flex-wrap  justify-evenly">
                     <div class="lg:max-w-md sm:max-w-sm  h-auto rounded overflow-hidden shadow-lg">
                         <div class="flex bg-primary-light justify-center items-center">
-                            <img class="h-1/2 w-1/2 " src="./assets/plate.png" alt="Sunset in the mountains">
+                            <img class="h-1/2 w-1/2 " src="{% static 'assets/plate.png' %}" alt="Sunset in the mountains">
                         </div>
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">Spaghetti</div>
@@ -112,7 +113,7 @@
                 <div class="flex h-full w-1/4 flex-wrap  justify-around">
                     <div class="max-w-md  h-auto rounded overflow-hidden shadow-lg">
                         <div class="flex bg-primary-light justify-center items-center">
-                            <img class="h-1/2 w-1/2 " src="./assets/plate.png" alt="Sunset in the mountains">
+                            <img class="h-1/2 w-1/2 " src="{% static 'assets/plate.png' %}" alt="Sunset in the mountains">
                         </div>
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">Spaghetti</div>
@@ -144,7 +145,7 @@
 
                 </div>
                 <div class="flex w-1/3 bg-secondary h-full justify-center items-center">
-                    <img class="h-1/2" src="../static/assets/plate.png" alt="logo">
+                    <img class="h-1/2" src="{% static 'assets/plate.png' %}" alt="logo">
                 </div>
             </div>
             <div class="mx-2 my-4 flex justify-between">
@@ -157,7 +158,7 @@
                     <div class="flex h-full w-1/4 flex-wrap pr-5 justify-around">
                         <div class="max-w-sm  h-auto rounded overflow-hidden shadow-none">
                             <div class="flex bg-secondary justify-center items-center">
-                                <img class="h-1/2 w-1/2 " src="./assets/plate.png" alt="Sunset in the mountains">
+                                <img class="h-1/2 w-1/2 " src="{% static 'assets/plate.png' %}" alt="Sunset in the mountains">
                             </div>
                             <div class="px-6 py-4">
                                 <div class="font-bold text-xl mb-2">Spaghetti</div>
@@ -184,7 +185,7 @@
                     <div class="flex h-full w-1/4 flex-wrap pr-5 justify-around">
                         <div class="max-w-sm  h-auto rounded overflow-hidden shadow-none">
                             <div class="flex bg-secondary justify-center items-center">
-                                <img class="h-1/2 w-1/2 " src="./assets/plate.png" alt="Sunset in the mountains">
+                                <img class="h-1/2 w-1/2 " src="{% static 'assets/plate.png' %}" alt="Sunset in the mountains">
                             </div>
                             <div class="px-6 py-4">
                                 <div class="font-bold text-xl mb-2">Spaghetti</div>
@@ -211,7 +212,7 @@
                     <div class="flex h-full w-1/4 flex-wrap pr-5 justify-around">
                         <div class="max-w-sm  h-auto rounded overflow-hidden shadow-none">
                             <div class="flex bg-secondary justify-center items-center">
-                                <img class="h-1/2 w-1/2 " src="./assets/plate.png" alt="Sunset in the mountains">
+                                <img class="h-1/2 w-1/2 " src="{% static 'assets/plate.png' %}" alt="Sunset in the mountains">
                             </div>
                             <div class="px-6 py-4">
                                 <div class="font-bold text-xl mb-2">Spaghetti</div>
@@ -238,7 +239,7 @@
                     <div class="flex h-full w-1/4 flex-wrap pr-5 justify-around">
                         <div class="max-w-sm  h-auto rounded overflow-hidden shadow-none">
                             <div class="flex bg-secondary justify-center items-center">
-                                <img class="h-1/2 w-1/2 " src="./assets/plate.png" alt="Sunset in the mountains">
+                                <img class="h-1/2 w-1/2 " src="{% static 'assets/plate.png' %}" alt="Sunset in the mountains">
                             </div>
                             <div class="px-6 py-4">
                                 <div class="font-bold text-xl mb-2">Spaghetti</div>
