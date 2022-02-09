@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Site</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/UserAuth/static/css/viewOrderItems.css">
+
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header>
+
+    <a href="#" class="logo"><img src="/UserAuth/static/assets/login/logo.png" alt="logo" style="margin: 0; padding: 0; width: 70px; height: 70px;"></a>
+
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+    <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#donate">Donate</a>
+        <a href="#get-started">Get Started</a>
+    </nav>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- speciality section starts  -->
+
+<section class="speciality" id="speciality">
+
+    <h1 class="heading"> My<span>Orders</span> </h1>
+  <div class="table-container">
+    <div class="product">
+         
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Location</th>
+                    <th>Quantity</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Product">Rice</td>
+                    <td data-label="Location">Kibera</td>
+                    <td data-label="Quantity">10kg</td>
+                    <td><button class="update">Update</button></td>
+                    <td><button class="delete">Delete</button></td>
+                </tr>
+                <tr>
+                    <td data-label="Product">Beans</td>
+                    <td data-label="Location">Kawangware</td>
+                    <td data-label="Quantity">1 bowl</td>
+                    <td><button class="update">Upadte</button></td>
+                    <td><button class="delete">Delete</button></td>
+                </tr>
+                <tr>
+                    <td data-label="Product">Maize Flour</td>
+                    <td data-label="Location">CBD</td>
+                    <td data-label="Quantity">3 tins</td>
+                    <td><button class="update">Upadte</button></td>
+                    <td><button class="delete">Delete</button></td>
+                </tr>
+            </tbody>      
+        </table>
+     </div>
+    </div>
+
+</section>
+
+<!-- speciality section ends -->
+
+<!-- popular section starts  -->
+
+<section class="popular" id="popular">
+
+    <h1 class="heading"> Recently <span>Added</span></h1>
+
+    <div class="box-container">
+
+        <div class="box" style="text-align: left;">
+            <img class="bur" src="/UserAuth/static/assets/login/burger.jpg" alt="">
+            <h3>Burger</h3>
+            <h4 style="font-size: 15px;">Nairobi</h4>
+            <div class="cart" style="float:right; margin-top: -5%;">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <a href="#" class="btn">order now</a>
+        </div>
+        <div class="box" style="text-align: left;">
+            <img class="bur"src="/UserAuth/static/assets/login/burger.jpg" alt="">
+            <h3>Burger</h3>
+            <h4 style="font-size: 15px;">Nairobi</h4>
+            <div class="cart" style="float:right; margin-top: -5%;">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <a href="#" class="btn">order now</a>
+        </div>
+        <div class="box" style="text-align: left;">
+            <img class="bur"src="/UserAuth/static/assets/login/burger.jpg" alt="">
+            <h3>Burger</h3>
+            <h4 style="font-size: 15px;">Nairobi</h4>
+            <div class="cart" style="float:right; margin-top: -5%;">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <a href="#" class="btn">order now</a>
+        </div>
+     
+    </div>
+
+</section>
+
+<!-- popular section ends -->
+
+</body>
+</html>
