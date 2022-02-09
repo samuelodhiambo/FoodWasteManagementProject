@@ -11,6 +11,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="{% static 'js/tailwind.js' %}"></script>
     <title>Food - Home</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 
 <body>
@@ -79,15 +80,16 @@
             </div>
 
             <div class="my-4 flex  justify-between h-1/2">
+                {% for product in products|slice:":2" %}
                 <div class="flex sm:block h-full w-1/4 flex-wrap  justify-evenly">
                     <div class="lg:max-w-md sm:max-w-sm  h-auto rounded overflow-hidden shadow-lg">
-                        <div class="flex bg-primary-light justify-center items-center">
-                            <img class="h-1/2 w-1/2 " src="{% static 'assets/plate.png' %}" alt="Sunset in the mountains">
+                        <div class="flex bg-primary-light justify-center items-center h-210">
+                            <img class="h-1/2 w-1/2 " src="{{ product.pimage.url }}" alt="Sunset in the mountains">
                         </div>
                         <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">Spaghetti</div>
+                            <div class="font-bold text-xl mb-2">{{ product.product_name }}</div>
                             <div class="flex justify-between">
-                                <div class="font-normal text-lg mb-2">Nairboi</div>
+                                <div class="font-normal text-lg mb-2">{{ product.county }}</div>
                             </div>
                             <p class="text-gray-700 text-base">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
@@ -99,7 +101,7 @@
                                 <span
                                     class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#free-delivery</span>
                                 <span
-                                    class="inline-block bg-primary-light rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#nationwide</span>
+                                    class="inline-block bg-primary-light rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ product.location }}</span>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -109,8 +111,9 @@
                         </div>
                     </div>
                 </div>
+                {% endfor %}
 
-                <div class="flex h-full w-1/4 flex-wrap  justify-around">
+                <!-- <div class="flex h-full w-1/4 flex-wrap  justify-around">
                     <div class="max-w-md  h-auto rounded overflow-hidden shadow-lg">
                         <div class="flex bg-primary-light justify-center items-center">
                             <img class="h-1/2 w-1/2 " src="{% static 'assets/plate.png' %}" alt="Sunset in the mountains">
@@ -143,7 +146,7 @@
                     </div>
 
 
-                </div>
+                </div> -->
                 <div class="flex w-1/3 bg-secondary h-full justify-center items-center">
                     <img class="h-1/2" src="{% static 'assets/plate.png' %}" alt="logo">
                 </div>
@@ -155,7 +158,37 @@
             <div class="mt-2">
                 <div class="flex wrap">
 
+                    {% for product in products|slice:":4" %}
                     <div class="flex h-full w-1/4 flex-wrap pr-5 justify-around">
+                        <div class="max-w-sm  h-auto rounded overflow-hidden shadow-none">
+                            <div class="flex bg-secondary justify-center items-center recent">
+                                <img class="h-1/2 w-1/2 " src="{{ product.pimage.url }}" alt="Sunset in the mountains">
+                            </div>
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">{{ product.product_name }}</div>
+                                <div class="flex justify-between">
+                                    <div class="font-normal text-lg mb-2">{{ product.county }}</div>
+                                </div>
+
+                            </div>
+                            <div class="px-6 pt-2 pb-2 flex justify-between">
+                                <div class="tags">
+                                </div>
+                                <div class="cart">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    {% endfor %}
+
+                    <!-- <div class="flex h-full w-1/4 flex-wrap pr-5 justify-around">
                         <div class="max-w-sm  h-auto rounded overflow-hidden shadow-none">
                             <div class="flex bg-secondary justify-center items-center">
                                 <img class="h-1/2 w-1/2 " src="{% static 'assets/plate.png' %}" alt="Sunset in the mountains">
@@ -235,34 +268,7 @@
                         </div>
 
 
-                    </div>
-                    <div class="flex h-full w-1/4 flex-wrap pr-5 justify-around">
-                        <div class="max-w-sm  h-auto rounded overflow-hidden shadow-none">
-                            <div class="flex bg-secondary justify-center items-center">
-                                <img class="h-1/2 w-1/2 " src="{% static 'assets/plate.png' %}" alt="Sunset in the mountains">
-                            </div>
-                            <div class="px-6 py-4">
-                                <div class="font-bold text-xl mb-2">Spaghetti</div>
-                                <div class="flex justify-between">
-                                    <div class="font-normal text-lg mb-2">Nairboi</div>
-                                </div>
-
-                            </div>
-                            <div class="px-6 pt-2 pb-2 flex justify-between">
-                                <div class="tags">
-                                </div>
-                                <div class="cart">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
+                    </div> -->
 
                 </div>
             </div>

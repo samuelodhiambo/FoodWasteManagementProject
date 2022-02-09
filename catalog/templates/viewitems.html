@@ -19,6 +19,7 @@
             <td>{{ product.product_name }}</td>
             <td>{{ product.location }}</td>
             <td>{{ product.quantity }}</td>
+            <td><img src="{{ product.pimage.url }}" alt="{{ product.product_name }}" height="50px"></td>
         </tbody>
         {% endfor %}
     </table>

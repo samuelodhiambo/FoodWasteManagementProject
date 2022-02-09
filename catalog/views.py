@@ -6,7 +6,11 @@ from .forms import FoodForm
 
 # Create your views here.
 def home_view(request, template='index.html'):
-    return render(request, template)
+    products = Food.objects.all()
+    context = {
+        'products': products,
+    }
+    return render(request, template, context)
 
 @login_required
 def add_item(request, template='additem.html'):
