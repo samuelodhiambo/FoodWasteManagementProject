@@ -57,10 +57,11 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Food, on_delete=models.CASCADE)
     date_ordered = models.DateTimeField(auto_now_add=True, null=True)
-    status = models.CharField(choices=STATUS, max_length=200, null=True)
+    time_ordered = models.TimeField(auto_now_add=True, null=True, blank=True)
+    status = models.CharField(choices=STATUS, max_length=200, null=True, default='Pending')
 
     class Meta:
         db_table = 'Order'
 
     def __str__(self) -> str:
-        return self.product
+        return self.product.product_name

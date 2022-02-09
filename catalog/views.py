@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Food
+from .models import Food, Order
 from .forms import FoodForm
 
 # Create your views here.
@@ -33,9 +33,37 @@ def add_item(request, template='additem.html'):
     form = FoodForm()
     return render(request, template, {'form': form})
 
+@login_required
 def view_items(request, template='viewOrderItem.html'):
-    products = Food.objects.all()
+    orders = Order.objects.all()
     context = {
-        'products': products,
+        'orders': orders,
     }
     return render(request, template, context)
+
+def order(request, template='viewOrderItem.html'):
+    orders = Order.objects.all()
+    order = Order()
+    if request.method == 'POST':
+        pk = request.POST.get('pk')
+        if not Order.objects.get(product=pk): 
+            food = Food.objects.get(id=pk)
+            order.user = request.user
+            order.product = food
+            try:
+                order.save()
+                return redirect('view')
+            except Exception as e:
+                error = e + 'Order Failed!!!'
+                context = {
+                    'orders': orders,
+                    'error': error
+                }
+                return render(request, template, context)
+        error = 'You have already placed that order'
+        context = {
+            'orders': orders,
+            'error': error
+        }
+        return render(request, template, context)
+    return redirect('home')

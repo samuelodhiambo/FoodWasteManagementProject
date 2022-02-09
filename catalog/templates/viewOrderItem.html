@@ -19,7 +19,7 @@
 
 <header>
 
-    <a href="#" class="logo"><img src="{% static 'assets/login/logo.png' %}" alt="logo" style="margin: 0; padding: 0; width: 70px; height: 70px;"></a>
+    <a href="{% url 'home' %}" class="logo"><img src="{% static 'assets/login/logo.png' %}" alt="logo" style="margin: 0; padding: 0; width: 70px; height: 70px;"></a>
 
     <div id="menu-bar" class="fas fa-bars"></div>
 
@@ -27,8 +27,10 @@
         <a href="{% url 'home' %}">home</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
-        <a href="#donate">Donate</a>
-        <a href="{% url 'signup' %}">Get Started</a>
+        <a href="{% url 'add_item' %}">Donate</a>
+        {% if request.user.username != '' %}
+        <a href="{% url 'logout' %}">Log out</a>
+        {% endif %}
     </nav>
 
 </header>
@@ -55,14 +57,28 @@
                 </tr>
             </thead>
             <tbody>
-                {% for product in products %}
+                {% for order in orders %}
                 <tr>
-                    <td><img src="{{ product.pimage.url }}" alt="{{ product.product_name }}" height="50px"></td>
-                    <td data-label="Product">{{ product.product_name }}</td>
-                    <td data-label="Location">{{ product.county }} ({{ product.location }})</td>
-                    <td data-label="Quantity">{{ product.quantity }}</td>
+                    <td><img src="{{ order.product.pimage.url }}" alt="{{ order.product.product_name }}" height="50px"></td>
+                    <td data-label="Product">{{ order.product.product_name }}</td>
+                    <td data-label="Location">{{ order.product.county }} ({{ order.product.location }})</td>
+                    <td data-label="Quantity">{{ order.product.quantity }}</td>
                     <td><button class="update">Update</button></td>
                     <td><button class="delete">Delete</button></td>
+                </tr>
+                {% if error != '' %}
+                <tr>
+                    <td colspan="6">{{ error }}</td>
+                </tr>
+                {% endif %}
+                {% empty %}
+                <tr>
+                    <td colspan="6">You havent made any order yet... </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 {% endfor %}
             </tbody>      
@@ -92,6 +108,8 @@
             </div>
             <a href="#" class="btn">order now</a>
         </div>
+        {% empty %}
+        <p>You will see food items here once somebody has posted some...</p>
         {% endfor %}
      
     </div>

@@ -7,6 +7,8 @@ from .models import UserProfile
 
 # Create your views here.
 def signin(request, template='Login.html'):
+    if request.user.is_authenticated:
+        return redirect('home')
     next = request.GET.get('next')
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -14,17 +16,21 @@ def signin(request, template='Login.html'):
         user = authenticate(request=request, username=username, password=password)
         if user:
             login(request, user)
-            print("post data",request.POST)
             if request.GET.get('next'):
-                url = request.GET.get("next", "")
-                url = resolve(str(url))
-                return HttpResponseRedirect('/add/')
+                url = request.GET['next']
+                url = str(url)
+                if url == '/add/' or str(url) == '/add/':
+                    return HttpResponseRedirect('/add/')
+                if url == '/view/' or str(url) == 'view':
+                    return HttpResponseRedirect('/view/')
             return redirect('home')
         error = 'Credentials do not match'
         return render(request, template, {'error': error})
     return render(request, template, {'next': next})
 
 def register(request, template='Register.html'):
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
