@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect, resolve_url
+from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.urls import resolve
 from .forms import CreateUserForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -12,12 +13,11 @@ def signin(request, template='Login.html'):
         user = authenticate(request=request, username=username, password=password)
         if user:
             login(request, user)
-            print(request)
+            print("post data",request.POST)
             if request.GET.get('next'):
-                redirect_to = str(request.GET.get('next'))
-                print(redirect_to)
-                url = '/add/'
-                return HttpResponseRedirect(next)
+                url = request.GET.get("next", "")
+                url = resolve(str(url))
+                return HttpResponseRedirect(url)
             return redirect('home')
         error = 'Credentials do not match'
         return render(request, template, {'error': error})
