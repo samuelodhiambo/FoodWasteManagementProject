@@ -1,9 +1,12 @@
 .h-210 {
-    height: 200px;
+  height: 200px;
 }
 
-
 .recent {
-    height: 135px;
-    width: 270px;
+  height: 135px;
+  width: 270px;
+}
+
+.show {
+  display: none !important;
 }
