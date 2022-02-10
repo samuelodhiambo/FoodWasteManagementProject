@@ -6,9 +6,9 @@
 ## Table of Content
 
 + [Description](#description)
-+ [Installation Requirement](#Installation)
++ [Contribution](#contribution)
 + [Technology Used](#technology-used)
-+ [Reference](#reference)
++ [Installation Requirement](#Installation)
 + [Licence](#licence)
 + [Authors Info](#author-Info)
 
@@ -43,16 +43,49 @@ This Project is created using:
 
 ```
 ```
-## How it works
+## Installation 
+### Requirements
+* Python3
+#### Process
+ **From the project directory:**
+* Install requirements from requirements.txt
+```
+ $ pip install requirements.txt
+```
+* Run migrations for django default apps
+```
+$ python manage.py migrate
+```
+* Run the custom apps migrations
+```
+$ python manage.py makemigrations catalog UserAuth
+$ python manage.py migrate
+```
+* Create a superuser administrator
+```
+$ python manage.py createsuperuser
+```
+* Run server
+```
+$ python manage.py runserver
+```
 
 
 
 ```
 ```
 ## Contact information
-* Github contact: <link>https://github.com/samuelodhiambo</link>
-* Licence and Copyright
-* Copyright 2022 Samuel Odhiambo
+## Authors
+
+- [@samuelodhiambo](https://www.github.com/samuelodhiambo)
+- [@lavenderodidi](https://github.com/OdidiLavender)
+- [@martinkariuki](https://github.com/Emkayint)
+- [@gladyswambura](https://github.com/gladyswambura)
+- [@nancymwende](https://github.com/bkee9)
+- [@brianomondi](https://github.com/Bnt-Workspace)
+
+## Licence and Copyright
+* Copyright 2022 FWMS-GROUP-MPP24
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
