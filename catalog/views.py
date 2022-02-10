@@ -78,3 +78,21 @@ def deleteOrder(request, id):
             return redirect('view')
         return redirect('view')
     return redirect('view')
+
+def my_products(request, template='viewOrderItem.html'):
+    my_products = True
+    products = Food.objects.filter(user=request.user.id)
+    context = {
+        'my_products': my_products,
+        'products': products
+    }
+    return render(request, template, context)
+
+def deleteProduct(request, id):
+    product = get_object_or_404(Food, id=id)
+    if request.method == 'POST':
+        if product.user == request.user:
+            product.delete()
+            return redirect('my_products')
+        return redirect('my_products')
+    return redirect('my_products')
