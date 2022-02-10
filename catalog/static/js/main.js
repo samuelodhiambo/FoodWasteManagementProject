@@ -1,6 +1,6 @@
 const element = document.getElementById('content');
 const modal = document.getElementById('productModal');
-let storage = window.localStorage;
+const menu = document.getElementById("menu");
 function showDropdown() {
     element.classList.toggle('show');
 }
@@ -19,5 +19,10 @@ function showModal(x) {
 
 function closeModal() {
     modal.classList.add('show')
+}
+function showMenu() {
+
+    menu.classList.toggle("show");
+
 }
 
