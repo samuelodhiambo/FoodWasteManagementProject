@@ -22,7 +22,7 @@ function closeModal() {
 }
 function showMenu() {
 
-    menu.classList.toggle("show");
+    menu.classList.toggle("hidden");
 
 }
 
