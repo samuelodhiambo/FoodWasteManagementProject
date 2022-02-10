@@ -1,0 +1,54 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container1{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    min-height: 100vh;
+}
+
+.card{
+    width: 100%;   
+    background-color: white;
+}
+.myInput{
+    background-color: beige;
+    color: black;
+}
+
+.label{
+    display: inline-block;
+    background-color: beige;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    color: blue;
+
+}
+
+select{
+    max-width: 50%;
+    color: green;
+}
+
+button.w3-button {
+    display: block;
+    margin: 0px auto;
+}
+
+@media screen and (max-width:600px){
+    form{
+        height: 100vh;
+    }
+
+    .card{
+        align-items: centerch;
+        width: 100%;
+        min-height: 100%;
+    }
+}

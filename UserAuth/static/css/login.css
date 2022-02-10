@@ -1,13 +1,20 @@
+.welcome {
+    text-align: center;
+}
+
 .welcome img {
-    padding-left: 650px;
-    width: 384px;
-    height: 380px;
+    height: 200px;
+}
+
+.outer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .rectangles {
     align-items: center;
     padding: 50px;
-    margin-left: 450px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     width: 700px;
     height: 380px;
