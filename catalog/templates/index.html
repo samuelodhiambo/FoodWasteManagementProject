@@ -46,14 +46,14 @@
                             role="menu" aria-orientation="vertical" aria-labelledby="profile" tabindex="-1">
                             <div class="py-1" role="none">
                                 <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                                <a href="{% url 'my_products' %}" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
                                     id="menu-item-0">My Products</a>
                                 <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">
                                     {% if request.user.username != '' %}
                                     <a href="{% url 'logout' %}">
                                         <button type="submit"
                                             class="text-gray-700 block w-full text-left px-4 py-2 text-sm"
-                                            role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+                                            role="menuitem" tabindex="-1" id="menu-item-3">Sign out ({{ request.user.username }})</button>
                                     </a>
                                     {% else %}
                                     <a href="{% url 'login' %}"><button
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#responsive-header"
+                    <a href="{% url 'add_item' %}"
                         class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -112,7 +112,10 @@
                             <img class="h-1/2 w-1/2 " src="{{ product.pimage.url }}" alt="Sunset in the mountains">
                         </div>
                         <div class="px-6 py-4">
-                            <button class="" onclick="showModal()">
+                            <button class="" onclick="showModal({
+                                image: '{{ product.pimage.url }}',
+                                name:'{{ product.product_name }}'
+                            })">
                                 <div class="font-bold text-xl mb-2">{{ product.product_name }}</div>
                             </button>
                             <div class="flex justify-between">
@@ -128,8 +131,8 @@
                                 <span
                                     class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#free-delivery</span>
                                 <span
-                                    class="inline-block bg-primary-light rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{
-                                    product.location }}</span>
+                                    class="inline-block bg-primary-light rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                                    #{{ product.location }}</span>
                             </div>
                             <form action="{% url 'order' %}" method="post">
                                 {% csrf_token %}
@@ -169,7 +172,12 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="pk" value="{{ product.id }}">
                                 <div class="px-6 py-4">
-                                    <div class="font-bold text-xl mb-2">{{ product.product_name }}</div>
+                                    <button type="button" onclick="showModal({
+                                        image: '{{ product.pimage.url }}',
+                                        name:'{{ product.product_name }}'
+                                    })">
+                                        <div class="font-bold text-xl mb-2">{{ product.product_name }}</div>
+                                    </button>
                                     <div class="flex justify-between">
                                         <div class="font-normal text-lg mb-2">{{ product.county }}</div>
                                     </div>
@@ -225,6 +233,7 @@
             </div>
         </div>
     </footer>
+
     <!-- Modal Section -->
     <div class="show min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover"
         id="productModal">
@@ -235,9 +244,9 @@
                 <!--body-->
                 <div class="text-center p-5 flex-auto justify-center">
                     <div class="flex w-full justify-center">
-                        <img class="w-32" src="{% static 'assets/plate.png' %}" />
+                        <img class="w-32" id="productImage" src="{% static 'assets/plate.png' %}" />
                     </div>
-                    <h2 class="text-xl font-bold py-4 ">Rice Pudding</h3>
+                    <h2 class="text-xl font-bold py-4 " id="productName"></h3>
                         <p class="text-sm text-gray-500 px-8">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                             Possimus quos dolores suscipit nobis voluptatibus ab doloribus. Deserunt illum iste magnam
                             commodi tempore repudiandae, voluptate odit provident temporibus quas vero quam?</p>
