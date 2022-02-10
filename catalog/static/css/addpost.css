@@ -41,6 +41,11 @@ button.w3-button {
     margin: 0px auto;
 }
 
+.theme-bg{
+    color: white;
+    background-color: #ed6e6e!important;
+}
+
 @media screen and (max-width:600px){
     form{
         height: 100vh;

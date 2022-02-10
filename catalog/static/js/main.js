@@ -5,8 +5,16 @@ function showDropdown() {
     element.classList.toggle('show');
 }
 
-function showModal() {
+function showModal(x) {
+    const productName = document.getElementById('productName');
+    const productImage = document.getElementById("productImage");
+
+    productName.innerText = x.name;
+
+    productImage.setAttribute("src", x.image);
+
     modal.classList.toggle('show')
+
 }
 
 function closeModal() {
@@ -17,3 +25,4 @@ function showMenu() {
     menu.classList.toggle("show");
 
 }
+
