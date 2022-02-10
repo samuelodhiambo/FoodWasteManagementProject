@@ -38,7 +38,7 @@ This Project is created using:
 * HTML
 * CSS
 * Python Django
-* TailwindCSS
+* Tailwind
 
 
 ```
@@ -82,7 +82,7 @@ $ python manage.py runserver
 - [@martinkariuki](https://github.com/Emkayint)
 - [@gladyswambura](https://github.com/gladyswambura)
 - [@nancymwende](https://github.com/bkee9)
-- [@brianomondi](https://github.com/Bnt-Workspace)
+- [@brianomondi](https://github.com/bryanbill)
 
 ## Licence and Copyright
 * Copyright 2022 FWMS-GROUP-MPP24
