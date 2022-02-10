@@ -78,3 +78,12 @@ def deleteOrder(request, id):
             return redirect('view')
         return redirect('view')
     return redirect('view')
+
+def my_products(request, template='viewOrderItem.html'):
+    my_products = True
+    products = Food.objects.filter(user=request.user.id)
+    context = {
+        'my_products': my_products,
+        'products': products
+    }
+    return render(request, template, context)

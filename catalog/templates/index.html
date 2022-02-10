@@ -58,7 +58,7 @@
                     {% if request.user.username != '' %}
                     <a href="{% url 'logout' %}"
                         class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-secondary">
-                        Logout
+                        Logout({{ request.user }})
                     </a>
                     {% endif %}
                 </div>

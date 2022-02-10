@@ -41,22 +41,51 @@
 
 <section class="speciality" id="speciality">
 
-    <h1 class="heading"> My<span>Orders</span> </h1>
+    <h1 class="heading"> My<span>{% if my_products %}Products{% else %}Orders{% endif %}</span> </h1>
   <div class="table-container">
     <div class="product">
          
         <table class="table">
             <thead>
                 <tr>
+                    {% if my_products %}
+                    <th></th>
+                    <th>Product</th>
+                    <th>Country(county)</th>
+                    <th>Location</th>
+                    <th>Quantity</th>
+                    <th></th>
+                    <th></th>
+                    {% else %}
                     <th></th>
                     <th>Product</th>
                     <th>Location</th>
                     <th>Quantity</th>
                     <th></th>
                     <th></th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
+                {% if my_products %}
+                {% for product in products %}
+                <tr>
+                    <td></td>
+                <td>{{ product.product_name }}</td>
+                <td>{{ product.country }}({{ product.county }})</td>
+                <td>{{ product.loacation }}</td>
+                <td>{{ product.quantity }}</td>
+                <td><button class="update">Update</button></td>
+                    <td>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <button class="delete" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                
+                {% endfor %}
+                {% else %}
                 {% for order in orders %}
                 <tr>
                     <td><img src="{{ order.product.pimage.url }}" alt="{{ order.product.product_name }}" height="50px"></td>
@@ -86,6 +115,7 @@
                     <td></td>
                 </tr>
                 {% endfor %}
+                {% endif %}
             </tbody>      
         </table>
      </div>
