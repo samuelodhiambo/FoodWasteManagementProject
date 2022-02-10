@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import home_view, add_item, order, view_items, order, deleteOrder, my_products
+from .views import home_view, add_item, order, view_items, order, deleteOrder, my_products, deleteProduct
 
 urlpatterns = [
     path('', home_view, name='home'),
@@ -24,4 +24,5 @@ urlpatterns = [
     path('order/', order, name='order'),
     path('delete/<id>/', deleteOrder, name='delete'),
     path('my_products', my_products, name='my_products'),
+    path('product/<id>/delete', deleteProduct, name='deleteproduct'),
 ]

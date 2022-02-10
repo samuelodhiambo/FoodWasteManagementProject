@@ -87,3 +87,12 @@ def my_products(request, template='viewOrderItem.html'):
         'products': products
     }
     return render(request, template, context)
+
+def deleteProduct(request, id):
+    product = get_object_or_404(Food, id=id)
+    if request.method == 'POST':
+        if product.user == request.user:
+            product.delete()
+            return redirect('my_products')
+        return redirect('my_products')
+    return redirect('my_products')

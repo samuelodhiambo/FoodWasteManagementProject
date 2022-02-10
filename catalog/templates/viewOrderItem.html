@@ -70,14 +70,14 @@
                 {% if my_products %}
                 {% for product in products %}
                 <tr>
-                    <td></td>
-                <td>{{ product.product_name }}</td>
-                <td>{{ product.country }}({{ product.county }})</td>
-                <td>{{ product.loacation }}</td>
-                <td>{{ product.quantity }}</td>
-                <td><button class="update">Update</button></td>
+                    <td><img src="{{ product.pimage.url }}" alt="{{ product.product_name }}" height="50px"></td>
+                    <td>{{ product.product_name }}</td>
+                    <td>{{ product.country }}({{ product.county }})</td>
+                    <td>{{ product.location }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td><button class="update">Update</button></td>
                     <td>
-                        <form action="" method="post">
+                        <form action="{% url 'deleteproduct' product.id %}" method="post">
                             {% csrf_token %}
                             <button class="delete" type="submit">Delete</button>
                         </form>
