@@ -48,15 +48,19 @@ def order(request, template='viewOrderItem.html'):
     order = Order()
     if request.method == 'POST':
         pk = request.POST.get('pk')
-        if not Order.objects.filter(product=pk).exists(): 
+        print("=====", pk)
+        if not Order.objects.filter(user=request.user, product=pk).exists():
+            print("=======", 'ian') 
             food = Food.objects.get(id=pk)
             order.user = request.user
             order.product = food
+            print("=================", order)
             try:
                 order.save()
                 return redirect('view')
             except Exception as e:
                 error = e + 'Order Failed!!!'
+                print(error)
                 context = {
                     'orders': orders,
                     'error': error
@@ -79,6 +83,7 @@ def deleteOrder(request, id):
         return redirect('view')
     return redirect('view')
 
+@login_required
 def my_products(request, template='viewOrderItem.html'):
     my_products = True
     products = Food.objects.filter(user=request.user.id)
