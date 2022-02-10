@@ -260,6 +260,7 @@ table tbody tr td{
 }
 
 .delete{
+  cursor: pointer;
   background: red;
   color: white;
   font-weight: normal;

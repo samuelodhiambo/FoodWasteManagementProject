@@ -1,5 +1,5 @@
 from multiprocessing import context
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Food, Order
 from .forms import FoodForm
@@ -35,14 +35,16 @@ def add_item(request, template='additem.html'):
 
 @login_required
 def view_items(request, template='viewOrderItem.html'):
-    orders = Order.objects.all()
+    orders = Order.objects.filter(user=request.user.id)
+    products = Food.objects.all()
     context = {
         'orders': orders,
+        'products': products
     }
     return render(request, template, context)
 
 def order(request, template='viewOrderItem.html'):
-    orders = Order.objects.all()
+    orders = Order.objects.filter(user=request.user.id)
     order = Order()
     if request.method == 'POST':
         pk = request.POST.get('pk')
@@ -67,3 +69,12 @@ def order(request, template='viewOrderItem.html'):
         }
         return render(request, template, context)
     return redirect('home')
+
+def deleteOrder(request, id):
+    order = get_object_or_404(Order, id=id)
+    if request.method == 'POST':
+        if order.user == request.user:
+            order.delete()
+            return redirect('view')
+        return redirect('view')
+    return redirect('view')

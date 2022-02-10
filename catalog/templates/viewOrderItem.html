@@ -64,7 +64,12 @@
                     <td data-label="Location">{{ order.product.county }} ({{ order.product.location }})</td>
                     <td data-label="Quantity">{{ order.product.quantity }}</td>
                     <td><button class="update">Update</button></td>
-                    <td><button class="delete">Delete</button></td>
+                    <td>
+                        <form action="{% url 'delete' order.id %}" method="post">
+                            {% csrf_token %}
+                            <button class="delete" type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 {% if error != '' %}
                 <tr>
@@ -103,10 +108,14 @@
             <img class="bur" src="{{ product.pimage.url }}" alt="{{ product.product_name }}">
             <h3>{{ product.product_name }}</h3>
             <h4 style="font-size: 15px;">{{ product.county }}</h4>
+            <form action="{% url 'order' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="pk" value="{{ product.id }}">
             <div class="cart" style="float:right; margin-top: -5%;">
-                <i class="fas fa-shopping-cart"></i>
+                <button type="submit"><i class="fas fa-shopping-cart"></i></button>
             </div>
-            <a href="#" class="btn">order now</a>
+            <button type="submit" class="btn">order now</button>
+            </form>
         </div>
         {% empty %}
         <p>You will see food items here once somebody has posted some...</p>
