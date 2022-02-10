@@ -1,31 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post</title>
+    <title>Food - Post</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'css/addpost.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
 </head>
 <body>
 
     <div class="container1 w3-padding-32">
-        <form>
+        <form action="." method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="w3-card card">
-                <header class="w3-container w3-blue">
+                <header class="w3-container w3-red">
                     <h1>Upload Image</h1>
+                    <span style="float: right;"><a href="{% url 'home' %}"><i class="far fa-window-close"></i></a></span>
                 </header>
                 <div class="w3-container w3-padding">
-                    <input type="file"c class="myInput" onchange="imagePreview()"><br>
+                    <input type="file" accept="image/*" name="pimage" class="myInput" onchange="imagePreview()"><br>
                     <br>
                     <img src="" height="200" max-width="100%" alt="">
                 </div>
                 <div class="w3-container w3-padding-16">
-                    <input type="text" name="caption" class="w3-input">
-                    <label>Enter Caption</label>
-                    <input type="number" name="quantity" class="w3-input">
-                    <label >Choose Quantity</label>
+                    <input type="text" name="product_name" class="w3-input">
+                    <label>Item Name</label>
+                    <input type="text" name="quantity" class="w3-input">
+                    <label >Quantity</label>
                     <input type="number" name="price" class="w3-input">
                     <label>Price</label>
     
@@ -280,7 +286,7 @@
                     </select>
                     <br>
                     <label for="county" class="label">Country</label><span style="color: red !important; display: inline; float: none;">*</span>
-                    <select id="counties" name="counties" class="form-control">
+                    <select id="counties" name="county" class="form-control">
                         <option value="baringo">Baringo</option>
                         <option value="bomet">Bomet</option>
                         <option value="bungoma">Bungoma</option>
@@ -329,13 +335,15 @@
                         <option value="wajir">Wajir</option>
                         <option value="pokot">West Pokot</option>
                     </select>
-                    <p></p>
-                    <label  class="w3-button w3-round-6 w3-blue">Select Location</label>
-                    
-                    <p></p>
-                    <p>Don't have an account <a href="#">Sign up</a></p>
+
                 </div>
-            </div>
+                <div class="w3-container w3-padding-16">
+                    <input type="text" name="location" class="w3-input">
+                    <label>Specific Location/Estate</label>
+                </div>
+
+            <button type="submit" class="w3-button w3-round-6 w3-blue">Add</button>
+        </div>
         </form>
     </div>
 
@@ -357,13 +365,6 @@
             }
         }
     </script>
-
-    <h1>Add Item</h1>
-    <form action="." method="post">
-        {% csrf_token %}
-        {{form}}
-        <input type="submit" value="submit">
-    </form>
 
 </body>
 </html>

@@ -36,6 +36,11 @@ select{
     color: green;
 }
 
+button.w3-button {
+    display: block;
+    margin: 0px auto;
+}
+
 @media screen and (max-width:600px){
     form{
         height: 100vh;

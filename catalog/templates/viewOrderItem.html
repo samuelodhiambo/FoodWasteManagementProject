@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Site</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/viewOrderItems.css' %}">
+
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header>
+
+    <a href="{% url 'home' %}" class="logo"><img src="{% static 'assets/login/logo.png' %}" alt="logo" style="margin: 0; padding: 0; width: 70px; height: 70px;"></a>
+
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+    <nav class="navbar">
+        <a href="{% url 'home' %}">home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="{% url 'add_item' %}">Donate</a>
+        {% if request.user.username != '' %}
+        <a href="{% url 'logout' %}">Log out</a>
+        {% endif %}
+    </nav>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- speciality section starts  -->
+
+<section class="speciality" id="speciality">
+
+    <h1 class="heading"> My<span>{% if my_products %}Products{% else %}Orders{% endif %}</span> </h1>
+  <div class="table-container">
+    <div class="product">
+         
+        <table class="table">
+            <thead>
+                <tr>
+                    {% if my_products %}
+                    <th></th>
+                    <th>Product</th>
+                    <th>Country(county)</th>
+                    <th>Location</th>
+                    <th>Quantity</th>
+                    <th></th>
+                    <th></th>
+                    {% else %}
+                    <th></th>
+                    <th>Product</th>
+                    <th>Location</th>
+                    <th>Quantity</th>
+                    <th></th>
+                    <th></th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% if my_products %}
+                {% for product in products %}
+                <tr>
+                    <td></td>
+                <td>{{ product.product_name }}</td>
+                <td>{{ product.country }}({{ product.county }})</td>
+                <td>{{ product.loacation }}</td>
+                <td>{{ product.quantity }}</td>
+                <td><button class="update">Update</button></td>
+                    <td>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <button class="delete" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                
+                {% endfor %}
+                {% else %}
+                {% for order in orders %}
+                <tr>
+                    <td><img src="{{ order.product.pimage.url }}" alt="{{ order.product.product_name }}" height="50px"></td>
+                    <td data-label="Product">{{ order.product.product_name }}</td>
+                    <td data-label="Location">{{ order.product.county }} ({{ order.product.location }})</td>
+                    <td data-label="Quantity">{{ order.product.quantity }}</td>
+                    <td><button class="update">Update</button></td>
+                    <td>
+                        <form action="{% url 'delete' order.id %}" method="post">
+                            {% csrf_token %}
+                            <button class="delete" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% if error != '' %}
+                <tr>
+                    <td colspan="6">{{ error }}</td>
+                </tr>
+                {% endif %}
+                {% empty %}
+                <tr>
+                    <td colspan="6">You havent made any order yet... </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>      
+        </table>
+     </div>
+    </div>
+
+</section>
+
+<!-- speciality section ends -->
+
+<!-- popular section starts  -->
+
+<section class="popular" id="popular">
+
+    <h1 class="heading"> Recently <span>Added</span></h1>
+
+    <div class="box-container">
+
+        {% for product in products|slice:":3" %}
+        <div class="box" style="text-align: left;">
+            <img class="bur" src="{{ product.pimage.url }}" alt="{{ product.product_name }}">
+            <h3>{{ product.product_name }}</h3>
+            <h4 style="font-size: 15px;">{{ product.county }}</h4>
+            <form action="{% url 'order' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="pk" value="{{ product.id }}">
+            <div class="cart" style="float:right; margin-top: -5%;">
+                <button type="submit"><i class="fas fa-shopping-cart"></i></button>
+            </div>
+            <button type="submit" class="btn">order now</button>
+            </form>
+        </div>
+        {% empty %}
+        <p>You will see food items here once somebody has posted some...</p>
+        {% endfor %}
+     
+    </div>
+
+</section>
+
+<!-- popular section ends -->
+
+</body>
+</html>

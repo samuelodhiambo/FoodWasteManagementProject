@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+
+}
+nav li{
+    display:inline;
+    margin-left: 100px;
+    
+}
+.details{
+    padding-left: 300px;
+    padding-top: 100px;
+}
+.userdetails{
+    width: 50%;
+    align-items: center;
+}
+
+.firstpart{
+    justify-content: space-between;
+}
+.info button{
+    margin-top: 30px;
+    border-radius: 8px;
+    background-color: red;
+
+}
+.info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    width: 50%;
+}
