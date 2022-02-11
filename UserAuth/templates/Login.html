@@ -18,6 +18,7 @@
     <div class="outer">
         <div class="rectangles">
             <h2>Welcome back</h2>
+            <p style="text-align: center; color: red; margin-bottom: 30px;">{{ error }}</p>
             <form action="{{ request.path }}{% if next %}?next='{{ next }}'{% endif %}" method="post">
                 {% csrf_token %}
                 <!-- username part -->
