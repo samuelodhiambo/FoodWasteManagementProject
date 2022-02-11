@@ -53,8 +53,8 @@
                                     <a href="{% url 'logout' %}">
                                         <button type="submit"
                                             class="text-gray-700 block w-full text-left px-4 py-2 text-sm"
-                                            role="menuitem" tabindex="-1" id="menu-item-3">Sign out ({{
-                                            request.user.username }})</button>
+                                            role="menuitem" tabindex="-1" id="menu-item-3">Sign out (
+                                                {{ request.user.username }})</button>
                                     </a>
                                     {% else %}
                                     <a href="{% url 'login' %}"><button

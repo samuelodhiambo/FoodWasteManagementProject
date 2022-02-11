@@ -28,11 +28,11 @@
                     <img src="" height="200" max-width="100%" alt="">
                 </div>
                 <div class="w3-container w3-padding-16">
-                    <input type="text" name="product_name" class="w3-input">
+                    <input type="text" name="product_name" class="w3-input" required>
                     <label>Item Name</label>
-                    <input type="text" name="quantity" class="w3-input">
+                    <input type="text" name="quantity" class="w3-input" required>
                     <label >Quantity</label>
-                    <input type="number" name="price" class="w3-input">
+                    <input type="number" name="price" class="w3-input" required>
                     <label>Price</label>
     
                 </div>
@@ -285,7 +285,7 @@
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
                     <br>
-                    <label for="county" class="label">Country</label><span style="color: red !important; display: inline; float: none;">*</span>
+                    <label for="county" class="label">County</label><span style="color: red !important; display: inline; float: none;">*</span>
                     <select id="counties" name="county" class="form-control">
                         <option value="baringo">Baringo</option>
                         <option value="bomet">Bomet</option>
@@ -338,7 +338,7 @@
 
                 </div>
                 <div class="w3-container w3-padding-16">
-                    <input type="text" name="location" class="w3-input">
+                    <input type="text" name="location" class="w3-input" required>
                     <label>Specific Location/Estate</label>
                 </div>
 
